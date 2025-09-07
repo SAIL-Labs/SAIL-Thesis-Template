@@ -1,0 +1,155 @@
+\documentclass[oneside,11pt,a4paper]{Latex/Classes/PhDthesisPSnPDF}
+%\thesisisdrafttrue
+\thesisisdraftfalse
+\input{preamble}
+
+%\includeonly{0_frontmatter/abstract,0_frontmatter/list_of_publications,0_frontmatter/acknowledgement,0_frontmatter/declaration}
+% \includeonly{1_introduction/overview}
+% \includeonly{2/macros}
+% \includeonly{3/figures}
+
+
+%: --------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% --------------------------------------------------------------
+\begin{document}
+
+% sets line spacing
+\renewcommand\baselinestretch{1.2}
+\baselineskip=18pt plus1pt
+
+\setcounter{secnumdepth}{2} % organisational level that receives a numbers
+\setcounter{tocdepth}{1}    % print table of contents for level 3
+
+%: ----------------------- generate cover page ------------------------
+\ifthesisisdraft
+	\frontmatter
+	\listoftodos
+	%\listoffigures
+\else
+	\maketitle  % command to print the title page with above variables
+	\copyrightpage
+	
+	%: ----------------------- cover page back side ------------------------
+	% Your research institution may require reviewer names, etc.
+	% This cover back side is required by Dresden Med Fac; uncomment if needed.
+	%
+	%\newpage
+	%\vspace{10mm}
+	%1. Reviewer: Name
+	%
+	%\vspace{10mm}
+	%2. Reviewer:
+	%
+	%\vspace{20mm}
+	%Day of the defense:
+	%
+	%\vspace{20mm}
+	%\hspace{70mm}Signature from head of PhD committee:
+	
+	
+	%: ----------------------- abstract ------------------------
+	
+	% Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
+	
+	\include{0_frontmatter/abstract}
+	
+	% The original template provides and abstractseparate environment, if your institution requires them to be separate. I think it's easier to print the abstract from the complete thesis by restricting printing to the relevant page.
+	% \begin{abstractseparate}
+	%   \input{Abstract/abstract}
+	% \end{abstractseparate}
+	
+	
+	%: ----------------------- tie in front matter ------------------------
+	
+	\frontmatter
+	%\include{0_frontmatter/dedication}
+	\include{0_frontmatter/acknowledgement}
+	\include{0_frontmatter/declaration}
+	\include{0_frontmatter/list_of_publications}
+
+
+%: ----------------------- contents ------------------------
+
+\tableofcontents            % print the table of contents
+% levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsubsection
+
+%%: ----------------------- list of figures/tables ------------------------
+\listoffigures	% print list of figures
+\listoftables  % print list of tables
+
+\fi
+%: --------------------------------------------------------------
+%: --------------------------------------------------------------
+%:                  MAIN DOCUMENT SECTION
+% --------------------------------------------------------------
+%: --------------------------------------------------------------
+
+% the main text starts here with the introduction, 1st chapter,...
+\mainmatter
+%\RaggedRight
+%\setlength{\parskip}{12pt plus 0.5ex minus 0.5ex}
+
+\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
+
+%: ----------------------- subdocuments ------------------------
+
+% Parts of the thesis are included below. Rename the files as required.
+% But take care that the paths match. You can also change the order of appearance by moving the include commands.
+
+\graphicspath{{0_overview/figures/}{1_introduction/figures/}{2/figures/}{3/figures/}{4/figures/}{5/figures/}{6/figures/}{7/figures/}}
+\input{9_backmatter/glossary} % include now for macros, print at end
+
+\include{1_introduction/overview}
+\include{2/macros}
+\include{3/figures}
+
+
+
+% --------------------------------------------------------------
+%:                  BACK MATTER: appendices, refs,..
+% --------------------------------------------------------------
+
+% the back matter: appendix and references close the thesis
+
+
+%: ----------------------- bibliography ------------------------
+
+% The section below defines how references are listed and formatted
+% The default below is 2 columns, small font, complete author names.
+% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
+
+%\nocite{*}
+
+\renewcommand*{\bibfont}{\scriptsize}
+\renewcommand{\bibname}{References}
+\printbibheading[heading=bibintoc]
+
+%\begin{multicols}{2}
+%\begin{footnotesize}
+%
+%\printbibliography[segment=0,notcategory=fullcited]
+\bibbysegment[heading=subbibliography]
+%
+%\end{footnotesize}
+%\end{multicols}
+
+%%: ----------------------- glossary ------------------------
+%
+%% Tie in external source file for definitions: /0_frontmatter/glossary.tex
+%% Glossary entries can also be defined in the main text. See glossary.tex
+
+%\glsaddall
+\printglossary[style=mcoltreegroup, title=Acronyms and Definitions]
+
+
+
+%: ----------------------- appendix -------------------------
+
+% according to Dresden med fac summary has to be at the end
+
+\include{9_backmatter/appendix}
+\include{9_backmatter/attached_papers}
+
+
+\end{document}

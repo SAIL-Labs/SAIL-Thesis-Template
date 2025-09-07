@@ -1,0 +1,45 @@
+%\newgeometry{textwidth=18.5cm,textheight=20.45cm}
+\appendix
+\vspace{-1.0cm}
+
+\chapter{MISPRINT Class}\label{chap:MISPRINTcode}
+%\lstinputlisting[caption=MISPRINT primary class,
+%			  basicstyle=\tiny,
+%			  label{apdx:code:MISPRINTcode}]{/Users/chrisbetters/Sydney Uni Dropbox/Chris Betters/github/common/+chrislib/@misprint/misprint.m}
+			  
+%'/Users/chrisbetters/Sydney Uni Dropbox/Chris Betters/github/common/+chrislib/@misprint'			  
+%\input{/Users/chrisbetters/github/phd/+chrislib/@misprint/html/misprint.tex}
+		
+			  
+\chapter{ZEMAX Macro to setup \echelle wavelength and orders}
+	\lstdefinelanguage{zpl}{morekeywords={ABSO, ACOS, APMN, APMX, APXD, APYD, APTP, ASIN, ASPR, ATAN, ATYP, AVAL, CONF, CONI, COSI, CURV, EDGE, EOFF, ETIM, EXPE, EXPT, FICL, FLDX, FLDY, FTYP, FVAN, FVCX, FVCY, FVDX, FVDY, FWGT, GABB, GETT, GIND, GLCA, GLCB, GLCC, GLCM, GLCX, GLCY, GLCZ, GNUM, GPAR, GRIN, IMAE, INDX, INTE, ISMS, LOGE, LOGT, MAGN, MAXF, MAXG, MCON, MCOP, MFCN, NCON, NFLD, NOBJ, NPAR, NPOS, NPRO, NSDC, NSDD, NSUR, NWAV, OCOD, ONUM, OPDC, OPER, OPEV, OPTH, PARM, PAR, PMOD, POWR, PVHX, PVHY, PVPX, PVPY, PWAV, RADI, RAGX, RAGY, RAGZ, RAND, RANX, RANY, RANZ, RAYE, RAYL, RAYM, RAYN, RAYO, RAYT, RAYV, RAYX, RAYY, RAYZ, RELI, SAGG, SCOD, SCOM, SDIA, SIGN, SINE, SLEN, SPRO, SQRT, STDD, STYP, SVAL, TANG, TMAS, THIC, UNIT, VEC1, VEC2, VEC3, VEC4, VERS, WAVL, WWGT, XMIN, XMAX, YMIN, YMAX, APMN, APMX, APXD, APYD, APTP, ATYP, AVAL, BEEP, COAT, CLOSE, CLOSEWINDOW, COLOUR, COMMENT, CONI, COPYFILE, CURV, DELETE, DELETECONFIG, DELETEFILE, DELETEMCO, DELETEMFO, DELETEOBJECT, EDVA, END, EXPORTBMP, EXPORTCAD, EXPORTJPG, EXPORTWMF, FINDFILE, FLDX, FLYD, FWGT, FVDX, FVDY, FOR, NEXT, FORMAT, FTYP, GCRS, GDATE, GETEXTRADATA, GETGLASSDATA, GETLSF, GETMTF, GETPSF, GETSYSTEMDATA, GETTEXTFILE, GETVARDATA, GETZERNIKE, GLAS, GLENSNAME, GOSUB, SUB, RETURN, END, GOTO, GRAPHICS, GTEXT, GTEXTCENT, GTITLE, HAMMER, IF, THEN, ELSE, ENDIF, IMA, IMASHOW, IMASUM, IMPORT_ED, INPUT, INSERT, INSERTCONFIG, INSERTMCO, INSERTMFO, INSERTOBJECT, LABEL, LINE, LOADCATALOG, LOADLENS, LOADMERIT, LOCKWINDOW, NEXT, NSTR, NUMFIELD, NUMWAVE, OPEN, OPTIMIZE, OPTRETURN, OUTPUT, PARM, PAR, PARAXIAL, PAUSE, PIXLE, POLDEFINE, POLTRACE, POP, PRINT, PRINTFILE, PRINTWINDOW, PWAV, QUICKFOCUS, RADI, RANDOMIZE, RAYTRACE, RAYTRACEX, READ, READNEXT, READSTRING, RELOADOBJECTS, REM, REMOVEVARIABLES, RENAMEFILE, RETURN, REWIND, SAVELENS, SAVEMERIT, SAVEWINDOW, SCATTER, SDIA, SETAIM, SETAIMDATA, SETAPODIZATION, SETCONFIG, SETDETECTOR, SETMCOPERAND, SETNSCPARAMETER, SETNSCPOSTION, SETNSCPROPERTY, SETOPERAND, SETSTDD, SETSURFACEPROPERTY, SURP, SETSYSTEMPROPERTY, SYSP, SETTEXTSIZE, SETTILE, SETUNITS, SETVAR, SETVECSIZE, SETVIG, SHOWFILE, SOLVETYPE, STOPSURF, SUB, SURFTYPE, TELECENTRIC, TESTPLATEFIT, THIC, TIMER, UNLOCKWINDOW, UPDATE, VEC1, VEC2, VEC3, VEC4, WAVL, WWGT, XDIFFIA, ZBFCLR, ZBFMULT, ZBFPROPERTIES, ZBFRESAMPLE, ZBFSHOW, ZBFSUM, ZBFTILT,CALLSETDBL,CALLMACRO,CALD},
+morecomment=[l]{\#},
+morecomment=[l]{!},
+morestring=[b]"}
+
+%\lstinputlisting[caption={ZEMAX macro to fill appropriate wavelengths for \echelle orders in separate configurations. \label{apdx:code:ZEMAX_echelle}},
+%			  basicstyle=\tiny,
+%			    language=zpl,
+%			  breaklines=true]{/Users/chrisbetters/Dropbox/ZEMAX/Macros/echelle_setup.zpl}
+%
+%\input{2/radiation_enviroment}
+
+\chapter{Code Examples}\label{chap:code_examples}
+
+\section{Python Class Example}
+\lstinputlisting[caption={Example Python class for optical system analysis},
+			  language=Python,
+			  basicstyle=\tiny,
+			  label={apdx:code:python_example}]{9_backmatter/python_example.py}
+
+\section{MATLAB Class Example}
+\lstinputlisting[caption={Example MATLAB class for wavefront analysis},
+			  basicstyle=\tiny,
+			  label={apdx:code:matlab_example}]{9_backmatter/matlab_example.m}
+
+\section{ZEMAX ZPL Macro Example}
+\lstinputlisting[caption={Example ZEMAX ZPL macro for automated analysis},
+			  language=zpl,
+			  basicstyle=\tiny,
+			  breaklines=true,
+			  label={apdx:code:zemax_example}]{9_backmatter/zemax_example.zpl}

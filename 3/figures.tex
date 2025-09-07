@@ -1,0 +1,106 @@
+\chapter{Figures}
+\label{chap:DesignPrinciples}
+\newrefsegment
+\glsresetall
+
+\section{Figure examples and macros}
+\label{sect:figexamples}
+
+This chapter demonstrates the use of various figure referencing macros and figure insertion commands provided by the thesis template. The template includes convenient macros that enforce consistent labeling and referencing practices throughout your thesis.
+
+The experimental techniques discussed here build upon recent advances in data analysis for high-energy physics experiments \autocite{yourname2024photwest} and modern condensed matter physics methodologies \autocite{yourname2023labchar}. These approaches have become standard practice in contemporary experimental physics research.
+
+\subsection{Cross-Referencing Macros}
+\label{sect:crossref}
+
+The template provides several referencing macros defined in MacroFile1.tex that automatically format references with proper prefixes. These referencing conventions are consistent with those used in the experimental validation of novel computational methods \autocite{yourname2023mnras} and numerical analysis studies \autocite{rodriguez2023opex}:
+
+\begin{itemize}
+    \item \texttt{\textbackslash fig\{label\}} produces short figure references like \fig{example-image-a}
+    \item \texttt{\textbackslash Fig\{label\}} produces long figure references like \Fig{example-image-b}
+    \item \texttt{\textbackslash eqn\{label\}} produces short equation references like \eqn{sampleequation}
+    \item \texttt{\textbackslash Eqn\{label\}} produces long equation references like \Eqn{sampleequation}
+    \item \texttt{\textbackslash sect\{label\}} produces section references like \sect{figexamples}
+    \item \texttt{\textbackslash chap\{label\}} produces chapter references like \chap{intro}
+    \item \texttt{\textbackslash tabl\{label\}} produces table references like \tabl{sampletable}
+\end{itemize}
+
+\subsection{Sample Equation}
+Here is a sample equation to demonstrate equation referencing:
+
+\begin{equation}
+    E = mc^2
+    \label{eqn:sampleequation}
+\end{equation}
+
+As shown in \Eqn{sampleequation}, Einstein's mass-energy equivalence is one of the most famous equations in physics. You can also reference it as \eqn{sampleequation} for a shorter form.
+
+\subsection{Figure Insertion Macros}
+\label{sect:figmacros}
+
+The template provides several convenient macros for inserting figures consistently. The following examples demonstrate the different figure macros available:
+
+\subsubsection{Dual Figure Layout}
+The \texttt{\textbackslash figuremacroSUB} macro creates side-by-side figures as shown below:
+
+\figuremacroSUB{Comparison of example images}{example-image-a}{This shows the first example image demonstrating the left panel of a dual figure layout}{0.4}{example-image-b}{This shows the second example image demonstrating the right panel of a dual figure layout}{0.4}
+
+Notice how \Fig{Comparison of example images} demonstrates the dual figure layout. You can reference individual components using \fig{example-image-a} and \fig{example-image-b}.
+
+\subsubsection{Single Figure with Width Control}
+The \texttt{\textbackslash figuremacroW} macro provides width control for single figures:
+
+\figuremacroW{example-image-c}{Full-width example}{This figure demonstrates a full-width image using the figuremacroW command with width parameter set to 1.0}{1}
+
+The full-width layout shown in \fig{example-image-c} is useful for wide diagrams or detailed images that need maximum space.
+
+\subsubsection{Figure with Position Control}
+The \texttt{\textbackslash figuremacroWp} macro adds position control parameters:
+
+\figuremacroWp{example-image-a}{Positioned example}{This figure demonstrates position control using the figuremacroWp macro with width 0.8 and position 'h' (here)}{0.8}{h}
+
+\subsection{Sample Table}
+\label{sect:sampletable}
+
+Here's a sample table to demonstrate table referencing:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|r|}
+\hline
+\textbf{Macro} & \textbf{Output Format} & \textbf{Example} \\
+\hline
+\texttt{\textbackslash fig\{label\}} & Fig.~\textbackslash ref\{fig:label\} & Fig.~1.1 \\
+\texttt{\textbackslash Fig\{label\}} & Figure~\textbackslash ref\{fig:label\} & Figure~1.1 \\
+\texttt{\textbackslash eqn\{label\}} & Eqn.~\textbackslash ref\{eqn:label\} & Eqn.~1.1 \\
+\texttt{\textbackslash sect\{label\}} & Sec.~\textbackslash ref\{sect:label\} & Sec.~1.1 \\
+\hline
+\end{tabular}
+\caption{Summary of referencing macros and their output formats}
+\label{tabl:sampletable}
+\end{table}
+
+As detailed in \tabl{sampletable}, each macro provides consistent formatting for different reference types.
+
+\begin{figure}[p]
+\centering
+\def\svgwidth{0.8\columnwidth}
+\includesvg{2/figures/1x7}
+	\caption[TOC title]{Caption.}
+	\label{fig:MCFgeometry}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.4\textwidth]{example-grid-100x100pt}
+	\caption[TOC Title]{Long Caption}
+	\label{fig:simulated tiger}
+\end{figure}
+
+
+
+\todofigure{Figure Placeholder}
+
+
+
+

@@ -1,0 +1,121 @@
+\chapter{Macros}
+\label{chap:Macros}
+\newrefsegment
+\glsresetall
+\section{Glossary and Acronym Reference}
+\label{sect:glossary-reference}
+
+This section demonstrates the glossary system by showing each term used twice - first use (with full definition) and subsequent use (abbreviated form). The glossary system allows for consistent terminology usage throughout the document, and all terms used here will appear in the final glossary at the end of the thesis.
+
+\subsection{Glossary Terms in Use}
+\label{sect:glossary-terms}
+
+The following table demonstrates all glossary entries by using them naturally. Each term is shown twice to illustrate the difference between first use and subsequent use formatting, plus the convenience command when available:
+
+\begin{longtable}{p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
+\caption{Glossary terms showing first use, subsequent use, and convenience commands} \\
+\toprule
+\textbf{First Use (Full Definition)} & \textbf{Subsequent Use (Abbreviated)} & \textbf{Convenience Command} \\
+\midrule
+\endfirsthead
+
+\caption[]{Glossary terms (continued)} \\
+\toprule
+\textbf{First Use (Full Definition)} & \textbf{Subsequent Use (Abbreviated)} & \textbf{Convenience Command} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{3}{r}{\textit{Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\gls{adu} & \gls{adu} & \texttt{\textbackslash ADU} produces \ADU \\
+\gls{ao} & \gls{ao} & \texttt{\textbackslash AO} produces \AO \\
+\gls{ar} & \gls{ar} & \texttt{\textbackslash AR} produces \AR \\
+\gls{awg} & \gls{awg} & \texttt{\textbackslash awg} produces \awg \\
+\gls{cots} & \gls{cots} & \texttt{\textbackslash COTS} produces \COTS \\
+\gls{dft} & \gls{dft} & \texttt{\textbackslash DFT} produces \DFT \\
+\gls{efl} & \gls{efl} & \texttt{\textbackslash efl} produces \efl \\
+\gls{fft} & \gls{fft} & \texttt{\textbackslash fft} produces \fft \\
+\gls{fp} & \gls{fp} & \texttt{\textbackslash FabryPerot} produces \FabryPerot \\
+\gls{fsr} & \gls{fsr} & \texttt{\textbackslash fsr} produces \fsr \\
+\gls{ft} & \gls{ft} & \texttt{\textbackslash ft} produces \ft \\
+\gls{fts} & \gls{fts} & \texttt{\textbackslash fts} produces \fts \\
+\gls{fwhm} & \gls{fwhm} & \texttt{\textbackslash fwhm} produces \fwhm \\
+\gls{ifu} & \gls{ifu} & \texttt{\textbackslash ifu} produces \ifu \\
+\gls{ips} & \gls{ips} & \texttt{\textbackslash ips} produces \ips \\
+\gls{ir} & \gls{ir} & \texttt{\textbackslash ir} produces \ir \\
+\gls{leo} & \gls{leo} & \texttt{\textbackslash leo} produces \leo \\
+\gls{lsf} & \gls{lsf} & \texttt{\textbackslash lsf} produces \lsf \\
+\gls{mcf} & \gls{mcf} & \texttt{\textbackslash mcf} produces \mcf \\
+\gls{mfd} & \gls{mfd} & \texttt{\textbackslash mfd} produces \mfd \\
+\gls{sm} & \gls{sm} & \texttt{SM} produces \sm \\
+\gls{mm} & \gls{mm} & \texttt{\textbackslash MM} produces \MM \\
+\gls{mmf} & \gls{mmf} & \texttt{\textbackslash MMF} produces \MMF \\
+\gls{mos} & \gls{mos} & \texttt{\textbackslash mos} produces \mos \\
+\gls{na} & \gls{na} & \texttt{\textbackslash NA} produces \NA \\
+\gls{nir} & \gls{nir} & \texttt{\textbackslash nir} produces \nir \\
+\gls{pcb} & \gls{pcb} & \texttt{\textbackslash pcb} produces \pcb \\
+\gls{pcf} & \gls{pcf} & \texttt{\textbackslash pcf} produces \pcf \\
+\gls{pl} & \gls{pl} & \texttt{\textbackslash lantern} produces \lantern \\
+\gls{pop} & \gls{pop} & \texttt{\textbackslash pop} produces \pop \\
+\gls{psf} & \gls{psf} & \texttt{\textbackslash psf} produces \psf \\
+\gls{ptv} & \gls{ptv} & \texttt{\textbackslash ptv} produces \ptv \\
+\gls{rms} & \gls{rms} & \texttt{\textbackslash rms} produces \rms \\
+\gls{sm} & \gls{sm} & \texttt{\textbackslash sm} produces \sm \\
+\gls{smf} & \gls{smf} & \texttt{\textbackslash smf} produces \smf \\
+\gls{snr} & \gls{snr} & \texttt{\textbackslash snr} produces \snr \\
+\gls{swir} & \gls{swir} & \texttt{\textbackslash swir} produces \swir \\
+\gls{tec} & \gls{tec} & \texttt{\textbackslash tec} produces \tec \\
+\gls{thar} & \gls{thar} & \texttt{\textbackslash thar} produces \thar \\
+\gls{uli} & \gls{uli} & \texttt{\textbackslash uli} produces \uli \\
+\gls{uv} & \gls{uv} & \texttt{\textbackslash uv} produces \uv \\
+\gls{vph} & \gls{vph} & \texttt{\textbackslash vph} produces \vph \\
+\gls{etendue} & \gls{etendue} & \texttt{\textbackslash etendue} produces \etendue \\
+\gls{f-ratio} & \gls{f-ratio} & \texttt{\textbackslash fnum} produces \fnum \\
+\gls{resolvingpower} & \gls{resolvingpower} & \texttt{\textbackslash R} produces \R \\
+\gls{seeing} & \gls{seeing} & \texttt{\textbackslash seeing} produces \seeing \\
+\gls{spectralresolution} & \gls{spectralresolution} & \texttt{\textbackslash dlam} produces \dlam \\
+\gls{throughput} & \gls{throughput} & \texttt{\textbackslash throughput} produces \throughput \\
+\end{longtable}
+
+\subsection{Using Glossary Commands}
+\label{sect:glossary-commands}
+
+The template provides several commands for using glossary entries consistently:
+
+\begin{description}
+    \item[\texttt{\textbackslash gls\{key\}}] First use shows full definition, subsequent uses show abbreviated form
+    \item[\texttt{\textbackslash glspl\{key\}}] Plural form of glossary entry (e.g., \glspl{smf})
+    \item[\texttt{\textbackslash glsfirst\{key\}}] Always shows the first use form
+    \item[\texttt{\textbackslash glstext\{key\}}] Shows only the short form/acronym
+    \item[\texttt{\textbackslash glssymbol\{key\}}] Shows the symbol (e.g., \glssymbol{etendue})
+    \item[\texttt{\textbackslash glsreset\{key\}}] Resets entry so next use shows full form
+    \item[\texttt{\textbackslash glsresetall}] Resets all entries (used at chapter beginnings)
+\end{description}
+
+Many entries also have convenience commands defined, such as \texttt{\textbackslash smf} which expands to \smf, and \texttt{\textbackslash fwhm} which expands to \fwhm. These convenience commands provide a shorter way to reference common terms.
+
+\subsubsection{Plural Forms}
+\label{sect:plural-forms}
+
+Many glossary entries support plural forms using \texttt{\textbackslash glspl\{key\}}. Some entries also have dedicated plural convenience commands:
+
+\begin{itemize}
+    \item \texttt{\textbackslash glspl\{smf\}} produces: \glspl{smf}
+    \item \texttt{\textbackslash smfs} convenience command produces: \smfs
+    \item \texttt{\textbackslash glspl\{mmf\}} produces: \glspl{mmf}  
+    \item \texttt{\textbackslash MMFs} convenience command produces: \MMFs
+    \item \texttt{\textbackslash glspl\{psf\}} produces: \glspl{psf}
+    \item \texttt{\textbackslash psfs} convenience command produces: \psfs
+    \item \texttt{\textbackslash glspl\{pl\}} produces: \glspl{pl}
+    \item \texttt{\textbackslash lanterns} convenience command produces: \lanterns
+\end{itemize}
+
+The plural forms automatically handle the appropriate grammatical form for each term, including both the abbreviated and full forms on first use.
+
+\section{Demo Text}
+Citations for demo at end: \autocite{yourname2024spie1,yourname2023spie2,yourname2022spie4}

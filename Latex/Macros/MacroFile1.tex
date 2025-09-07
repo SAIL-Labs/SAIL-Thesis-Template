@@ -1,0 +1,248 @@
+% This file contains macros that can be called up from connected TeX files
+% It helps to summarise repeated code, e.g. figure insertion (see below).
+
+% words
+
+% insert a centered figure with caption and description
+% parameters 1:filename, 2:title, 3:description and label
+
+%% referencing macros, enforces standard labelling practice.
+\newcommand{\fig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\Fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\eqn}[1]{Eqn.~\ref{eqn:#1}}
+\newcommand{\Eqn}[1]{Equation~\ref{eqn:#1}}
+\newcommand{\sect}[1]{Sec.~\ref{sect:#1}}
+\newcommand{\chap}[1]{Chap.~\ref{chap:#1}}
+\newcommand{\tabl}[1]{Table~\ref{tabl:#1}}
+\newcommand{\apdx}[1]{Appendix.~\ref{apdx:#1}}
+
+
+%% quick formating word commands
+\newcommand{\echelle}{\'{e}chelle\xspace}
+\newcommand{\alfcen}{$\alpha$-\text{Cen}\xspace}
+
+\newcommand{\wrt}{with respect to\xspace}
+\newcommand{\fcam}{$f_\text{cam}$\xspace}
+\newcommand{\fcamMath}{f_\text{cam}}
+\newcommand{\ewidth}{$1/e^2$~diameter\xspace}
+
+%units shortcuts
+\newcommand{\lpmm}[1]{\SI{#1}{lines\per\milli\meter}\xspace}
+\newcommand{\mum}[1]{~$#1\mu$m}
+\newcommand{\um}{~$\mu$m\xspace}
+\newcommand{\nanometre}{~nm\xspace}
+\newcommand{\millimetre}{~mm\xspace}
+\newcommand{\picometre}{~pm\xspace}
+
+%% punctuation fixs
+\renewcommand{\~}{\raise.17ex\hbox{$\scriptstyle\sim$}}
+\usepackage{xspace}
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+
+
+%% usefull
+
+
+
+\makeatletter
+\newcommand*{\etc}{%
+    \@ifnextchar{.}%
+        {etc}%
+        {etc.\@\xspace}%
+}
+\makeatother
+
+\newcommand{\todofigure}[1]{\missingfigure{#1}\todo{#1}}
+
+
+\usepackage{pdfpages}
+\newcommand{\insertpaper}[3]%
+           { % Syntax: \insertpaper{title}{label}{File}
+             % Requires: tocloft hyperref pdfpages
+            \includepdf[addtotoc={1,section,1,#1,#2}]{#3}
+            \includepdf[pages=2-last]{#3}
+           }
+
+%Inkscape inclusions
+\usepackage{bashful}
+\usepackage{import}
+%\usepackage{ifplatform}
+\usepackage{etoolbox}
+
+\newbool{canInkscape} %default false
+\setbool{canInkscape}{true}
+
+\newcommand{\includesvg}[1]{
+    \ifbool{canInkscape}{
+        \immediate\write18{sh tools/inkscapeSVG2PDFtex.sh #1}
+        }{}%
+\IfFileExists{#1.pdf_tex}{\textsf{\input{#1.pdf_tex}}}{\textsf{#1.pdf\_tex is missing. inkscapeSVG2PDFtex.sh likely failed.  \\ \rule{5cm}{5cm}}}
+}
+
+
+%fig macros
+\newcommand{\figuremacro}[3]{
+	\begin{figure}[b]
+		\centering
+		\includegraphics[width=1\textwidth]{#1}
+		\caption[#2]{{#2} - #3}
+		\label{#1}
+	\end{figure}
+}
+
+% insert a centered figure with caption and description AND WIDTH
+% parameters 1:filename, 2:title, 3:description and label, 4: textwidth
+% textwidth 1 means as text, 0.5 means half the width of the text
+\newcommand{\figuremacroW}[4]{
+	\begin{figure}
+		\centering
+		\includegraphics[width=#4\textwidth]{#1}
+		\caption[#2]{#3}
+		\label{fig:#1}
+	\end{figure}
+}
+
+\newcommand{\figuremacroWp}[5]{
+	\begin{figure}[#5]
+		\centering
+		\includegraphics[width=#4\textwidth]{#1}
+		\caption[#2]{#3}
+		\label{fig:#1}
+	\end{figure}
+}
+
+% insert a centered subfigure with caption and description AND WIDTH
+% parameters 1:filename, 2:title, 3:description and label, 4: textwidth
+% textwidth 1 means as text, 0.5 means half the width of the text
+%\newcommand{\figuremacroSUB}[7]{
+%	\begin{figure}[tbh]
+%	   \centering
+%		\subfloat[]{\label{#2}\includegraphics[width=#4\textwidth]{#2}}
+%		\quad
+%		\subfloat[]{\label{#5}\includegraphics[width=#7\textwidth]{#5}}
+%	   \caption[#1]{{#1} - {\it a)} #3  {\it b)} #6}
+%	   \label{#1}
+%	\end{figure}
+%}
+
+%1:title 2:file1 3:caption1 4:width1 5:file2 6:caption2 7:width2
+\newcommand{\figuremacroSUB}[7]{
+\begin{figure}[tbh]
+\centering
+     % subfig 1
+	 \begin{subfigure}[b]{#4\textwidth}
+	     \centering
+         \includegraphics[width=\textwidth]{#2}
+         \caption{}
+         \label{fig:#2}
+	 \end{subfigure} 
+	 % subfig 2
+	 \begin{subfigure}[b]{#7\textwidth}
+	     \centering
+         \includegraphics[width=\textwidth]{#5}
+         \caption{}
+         \label{fig:#5}
+	 \end{subfigure}
+	 	 
+	 \vspace{-0.2cm}
+	 \caption[#1]{{\it a)} #3  {\it b)} #6}
+	 \label{fig:#1}
+\end{figure}
+}
+
+\newcommand{\figuremacroSUBp}[8]{
+\begin{figure}[#8]
+\centering
+     % subfig 1
+	 \begin{subfigure}[b]{#4\textwidth}
+	     \centering
+         \includegraphics[width=\textwidth]{#2}
+         \caption{}
+         \label{fig:#2}
+	 \end{subfigure} 
+	 % subfig 2
+	 \begin{subfigure}[b]{#7\textwidth}
+	     \centering
+         \includegraphics[width=\textwidth]{#5}
+         \caption{}
+         \label{fig:#5}
+	 \end{subfigure}
+	 
+	 \vspace{-0.2cm}
+	 \caption[#1]{{\it a)} #3  {\it b)} #6}
+	 \label{fig:#1}
+\end{figure}
+}
+
+
+%\figuremacroSUB{title}{file1}{caption1}{size1}{file2}{caption2}{size2}
+
+% inserts a figure with wrapped around text; only suitable for NARROW figs
+% o is for outside on a double paged document; others: l, r, i(inside)
+% text and figure will each be half of the document width
+% note: long captions often crash with adjacent content; take care
+% in general: above 2 macro produce more reliable layout
+\newcommand{\figuremacroN}[3]{
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.48\textwidth]{#1}
+		\caption[#2]{{\small\textbf{#2} - #3}}
+		\label{#1}
+	\end{wrapfigure}
+}
+
+% predefined commands by Harish
+\newcommand{\PdfPsText}[2]{
+  \ifpdf
+     #1
+  \else
+     #2
+  \fi
+}
+
+\newcommand{\IncludeGraphicsH}[3]{
+  \PdfPsText{\includegraphics[height=#2]{#1}}{\includegraphics[bb = #3, height=#2]{#1}}
+}
+
+\newcommand{\IncludeGraphicsW}[3]{
+  \PdfPsText{\includegraphics[width=#2]{#1}}{\includegraphics[bb = #3, width=#2]{#1}}
+}
+
+\newcommand{\InsertFig}[3]{
+  \begin{figure}[!htbp]
+    \begin{center}
+      \leavevmode
+      #1
+      \caption{#2}
+      \label{#3}
+    \end{center}
+  \end{figure}
+}
+
+%% fix biblatex's fullcite to use maxbibnames
+%\makeatletter
+%\DeclareCiteCommand{\fullcite}
+%  {\defcounter{maxnames}{\blx@maxbibnames}%
+%    \usebibmacro{prenote}}
+%  {\usedriver
+%     {\DeclareNameAlias{sortname}{default}}
+%     {\thefield{entrytype}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%\DeclareCiteCommand{\footfullcite}[\mkbibfootnote]
+%  {\defcounter{maxnames}{\blx@maxbibnames}%
+%    \usebibmacro{prenote}}
+%  {\usedriver
+%     {\DeclareNameAlias{sortname}{default}}
+%     {\thefield{entrytype}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%\makeatother
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "~/Documents/LaTeX/CUEDThesisPSnPDF/thesis"
+%%% End: 
+

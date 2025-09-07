@@ -1,0 +1,214 @@
+% ----------------------------------------------------------------------
+%                   LATEX TEMPLATE FOR THESIS
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+
+
+%: Style file for Latex
+% Most style definitions are in the external file PhDthesisPSnPDF.
+% In this template package, it can be found in ./Latex/Classes/
+
+% DRAFT BOX
+\ifthesisisdraft
+	\renewcommand{\submittedtext}{{A thesis {\bf draft} for the degree of}}
+	\fancyhead[RO]{\framebox{{\sc Draft:}\quad\datethis}\hfill \bfseries\rightmark}
+	\fancyhead[LE]{\framebox{{\sc Draft:}\quad\datethis}\hfill \bfseries\leftmark}
+\fi
+% Additional Packages
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage[disable]{todonotes} %disable
+%\usepackage[marginpar]{todo}
+\usepackage{Latex/Macros/aas_macros}
+\usepackage[numbered,autolinebreaks]{Latex/StyleFiles/mcode}
+\usepackage[palatino]{quotchap}
+\usepackage[section,below]{placeins}
+\usepackage{listings}
+% Load ctable after tikz (tikz loaded by todonotes or other packages)
+\usepackage{ctable}
+\usepackage{datetime}
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH], \THEYEAR}
+\usepackage{ragged2e}
+\usepackage{siunitx}
+
+\usepackage{tablefootnote}
+
+
+
+\newcounter{mycomment}
+\newcommand{\mycomment}[1]{%
+    % initials of the author (optional) + note in the margin
+    \refstepcounter{mycomment}%
+    {%
+        \todo[color={blue!20!white},size=\scriptsize]{%
+		%\begin{spacing}{0.5}
+            \textbf{[\uppercase{CHB}\themycomment]:}~#1} 
+		%\end{spacing}%
+	}
+}
+
+\newcounter{SLScomment}
+\newcommand{\SLScomment}[1]{%
+    % initials of the author (optional) + note in the margin
+    \refstepcounter{mycomment}%
+    {%
+        \todo[color={red!20!white},size=\scriptsize]{%
+		%\begin{spacing}{0.5}
+            \textbf{[\uppercase{SLS}\themycomment]:}~#1} 
+		%\end{spacing}%
+	}
+}
+
+\newcounter{JGRcomment}
+\newcommand{\JGRcomment}[1]{%
+    % initials of the author (optional) + note in the margin
+    \refstepcounter{mycomment}%
+    {%
+        \todo[color={green!20!white},size=\scriptsize]{%
+		%\begin{spacing}{0.5}
+            \textbf{[\uppercase{JGR}\themycomment]:}~#1} 
+		%\end{spacing}%
+	}
+}
+
+%: ----------------------------------------------------------------------
+%:                  Colours
+% -----------------------------------------------------------------------
+\definecolor{SchoolColor}{RGB}{230, 70, 38} % Masterbrand red
+\definecolor{chaptergrey}{RGB}{230, 70, 38}
+\definecolor{midgrey}{RGB}{66, 66, 66}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+%: ----------------------------------------------------------------------
+%:                  Listings (code inculision)
+% -----------------------------------------------------------------------
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\normalsize\ttfamily,%\tiny,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}, % ornage arrow to contiunue line
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=none,                      % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Matlab,                 % the language of the code
+  morekeywords={*,classdef,misprint, self, handleAllHidden, properties, methods,bsxfun,repmat},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=4pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  numberfirstline=true,
+  rulecolor=\color{gray},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+%  xleftmargin=2cm,
+%  xrightmargin=2cm,
+%  framexleftmargin=2cm,
+%  framexrightmargin=2cm,
+%  framexbottommargin=4pt,
+}
+\renewcommand\lstlistingname{Code}
+\renewcommand\lstlistlistingname{Code}
+ 
+\lstnewenvironment{codebox}[1][] 
+   	{\centering\lstset{linewidth=\textwidth,
+					xleftmargin=0.075\textwidth,
+				   xrightmargin=0.075\textwidth,
+						  frame=single, 
+				     basicstyle=\footnotesize,
+				     abovecaptionskip=-0.75cm,
+				       #1}
+	}{}
+
+%: Macro file for Latex
+% Macros help you summarise frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro (see introduction.tex)
+\input{Latex/Macros/MacroFile1}
+
+%: ----------------------------------------------------------------------
+%:                  TITLE PAGE: name, degree,..
+% -----------------------------------------------------------------------
+% below is to generate the title page with crest and author name
+
+% Document metadata - define once, use everywhere
+% \def\thesistitle{A new approach to classical spectroscopy.}
+% \def\thesisauthor{Christopher H. Betters}
+% \def\thesisauthoremail{chris@chrisbetters.com}
+% \def\thesiskeywords{Astrophotonics; Diffraction-limited spectroscopy; PhD Thesis}
+% \def\thesislogo{0_frontmatter/figures/usydlogo_bw.pdf}
+% \def\thesiscollege{Faculty of Science}
+% \def\thesisuniversity{The University of Sydney}
+% \def\thesisdegree{Doctor of Philosophy}
+
+
+% Document setup using dynamic variables
+\title{Your amazing thesis title.}
+
+% ----------------------------------------------------------------------
+% The section below defines www links/email for author and institutions
+% They will appear on the title page of the PDF and can be clicked
+\author{First Lastname}
+\def\thesisauthoremail{First.Lastname@sydney.edu.au}
+\def\thesiskeywords{Science; PhD Thesis}
+
+
+\collegeordept{Faculty of Science}
+\university{The University of Sydney}
+\crest{
+  \includegraphics[width=6cm]{0_frontmatter/figures/usydlogo_bw.pdf}
+}
+
+\degree{Doctor of Philosophy}
+\degreedate{\monthyeardate\today}
+\degreeyear{\the\year}
+% ----------------------------------------------------------------------
+
+%PDF output configuration using dynamic variables
+\hypersetup{pdfinfo={
+Title={\thetitle},
+Author={\theauthor\space\thesisauthoremail},
+Keywords={\thesiskeywords}
+},
+colorlinks,
+citecolor=SchoolColor,
+filecolor=black,
+linkcolor=black,
+urlcolor=SchoolColor}
+
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+%: --------------------------------------------------------------
+%:                         REFERENCES
+%: --------------------------------------------------------------
+%\addbibresource{bib/references.bib} % must have .bib
+%tex
+%\addbibresource{bib/allofpapers.bib}
+%\addbibresource{bib/referencesSPIE2012-1.bib}
+%\addbibresource{bib/referencesSPIE2012-2.bib}
+
+\addbibresource{bib/thesisRefs.bib}
+\addbibresource{bib/fake_publications.bib}
+
+\makeglossaries

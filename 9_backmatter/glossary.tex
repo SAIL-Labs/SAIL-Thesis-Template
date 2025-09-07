@@ -1,0 +1,300 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%\newacronym{<label>}{<abbrv>}{<full>}
+
+
+%\newglossaryentry{naiive}
+%{
+%  name=na\"{\i}ve,
+%  description={is a French loanword (adjective, form of naïf)
+%               indicating having or showing a lack of experience,
+%               understanding or sophistication},
+%  sort=naive
+%}
+
+
+% todo Glossary Shortcut
+%% locaization stuuf
+
+\newif\ifamerican
+
+\americanfalse
+
+\ifamerican
+  \newcommand{\fibre}{fiber\xspace}
+  \newcommand{\fibres}{fibers\xspace}
+\else
+  \newcommand{\fibre}{fibre\xspace}
+  \newcommand{\fibres}{fibres\xspace}
+\fi
+
+
+%\newacronym{smf}{SMF}{single-mode \fibre\xspace}
+\newglossaryentry{smf}
+{
+  name={SMF},
+  description={single-mode \fibre},
+  first={single-mode \fibre (\glsentrytext{smf})},
+  plural={SMFs},
+  descriptionplural={single-mode \fibres},
+  firstplural={single-mode \fibres (\glsentryplural{smf})}
+}
+\newcommand{\smf}{\gls{smf}\xspace}
+\newcommand{\smfs}{\glspl{smf}\xspace}
+
+
+\newacronym{sm}{SM}{single-mode\xspace}
+\newcommand{\sm}{\gls{sm}\xspace}
+
+\newacronym{mm}{MM}{multi-mode\xspace}
+\newcommand{\MM}{\gls{mm}\xspace}
+
+%\newacronym{mmf}{MMF}{multi-mode \fibre}
+\newglossaryentry{mmf}
+{
+  name={MMF},
+  description={multi-mode \fibre},
+  first={multi-mode \fibre (\glsentrytext{mmf})},
+  plural={MMFs},
+  descriptionplural={multi-mode \fibres},
+  firstplural={multi-mode \fibres (\glsentryplural{mmf})}
+}
+\newcommand{\MMF}{\gls{mmf}\xspace}
+\newcommand{\MMFs}{\glspl{mmf}\xspace}
+
+\newacronym{pimms}{PIMMS}{photonic integrated multi-mode spectrograph}
+\newcommand{\pimms}{\gls{pimms}\xspace}
+
+\newacronym{mcf}{MCF}{multi-core fibre}
+\newcommand{\mcf}{\gls{mcf}\xspace}
+
+\newacronym{fwhm}{FWHM}{full width half maximum}
+\newcommand{\fwhm}{\gls{fwhm}\xspace}
+
+\newacronym{ifu}{IFU}{integral field unit}
+\newcommand{\ifu}{\gls{ifu}\xspace}
+
+\newacronym{uli}{ULI}{ultrafast laser inscription}
+\newcommand{\uli}{\gls{uli}\xspace}
+
+\newacronym{vph}{VPH}{volume-phase holographic}
+\newcommand{\vph}{\gls{vph}\xspace}
+
+\newacronym{ft}{FT}{Fourier transform}
+\newcommand{\ft}{\gls{ft}\xspace}
+
+\newacronym{ar}{AR}{anti-reflective}
+\newcommand{\AR}{\gls{ar}\xspace}
+
+\newacronym{fts}{FTS}{Fourier transform spectrometer}
+\newcommand{\fts}{\gls{fts}\xspace}
+\newcommand{\ftss}{\glspl{fts}\xspace}
+
+\newacronym{mos}{MOS}{multi-object spectrograph}
+\newcommand{\mos}{\gls{mos}\xspace}
+\newcommand{\moss}{\glspl{mos}\xspace}
+
+\newacronym{psf}{PSF}{point spread function}
+\newcommand{\psf}{\gls{psf}\xspace}
+\newcommand{\psfs}{\glspl{psf}\xspace}
+
+\newacronym{lsf}{LSF}{line spread function}
+\newcommand{\lsf}{\gls{psf}\xspace}
+
+\newacronym{snr}{SNR}{single-to-noise ratio}
+\newcommand{\snr}{\gls{snr}\xspace}
+
+\newacronym{rms}{RMS}{root mean square}
+\newcommand{\rms}{\gls{rms}\xspace}
+
+\newacronym{fsr}{FSR}{free spectral range}
+\newcommand{\fsr}{\gls{fsr}\xspace}
+
+\newacronym{na}{NA}{numerical aperture}
+\newcommand{\NA}{\gls{na}\xspace}
+
+\newacronym{cots}{COTS}{commercial off-the-shelf}
+\newcommand{\COTS}{\gls{cots}\xspace}
+
+\newacronym{pcb}{PCB}{printed circuit board}
+\newcommand{\pcb}{\gls{pcb}\xspace}
+\newcommand{\pcbs}{\glspl{pcb}\xspace}
+
+\newacronym{pop}{POP}{physical optics propagation}
+\newcommand{\pop}{\gls{pop}\xspace}
+
+\newacronym{pcf}{PCF}{photonic crystal fibre}
+\newcommand{\pcf}{\gls{pcf}\xspace}
+
+\newacronym{efl}{EFL}{effective focal length}
+\newcommand{\efl}{\gls{efl}\xspace}
+\newcommand{\efls}{\glspl{efl}\xspace}
+
+\newacronym{thar}{ThAr}{Thorium-Argon}
+\newcommand{\thar}{\gls{thar}\xspace}
+
+\newacronym{fp}{FP}{Fabry-P\'erot}
+\newcommand{\FabryPerot}{\gls{fp}\xspace}
+
+\newacronym{ao}{AO}{adaptive optics}
+\newcommand{\AO}{\gls{ao}\xspace}
+
+\newacronym{tec}{TEC}{thermoelectric cooler}
+\newcommand{\tec}{\gls{tec}\xspace}
+
+\newacronym{ptv}{PTV}{peak to valley}
+\newcommand{\ptv}{\gls{ptv}\xspace}
+
+\newacronym{dft}{DFT}{direct Fourier transfrom}
+\newcommand{\DFT}{\gls{dft}\xspace}
+
+\newacronym{fft}{FFT}{fast Fourier transfrom}
+\newcommand{\fft}{\gls{fft}\xspace}
+
+\newacronym{adu}{ADU}{analogue-to-digital units}
+\newcommand{\ADU}{\gls{adu}\xspace}
+
+\newglossaryentry{pl}{
+    name={PL},
+    description={photonic lantern; a multi-mode to single-mode converter},
+    first={photonic lantern (PL)}
+}
+\newcommand{\lantern}{\gls{pl}\xspace}
+\newcommand{\lanterns}{\glspl{pl}\xspace}
+\newcommand{\pl}{\gls{pl}\xspace}
+\newcommand{\pls}{\glspl{pl}\xspace}
+
+\newglossaryentry{awg}{
+    name={AWG},
+    description={arrayed waveguide grating; a device with a series single mode waveguides where each waveguide has increases in length by a fixed phase offset, producing a high order diffraction/dispersion},
+    first={arrayed waveguide grating (AWG)}
+}
+\newcommand{\awg}{\gls{awg}\xspace}
+\newcommand{\awgs}{\glspl{awg}\xspace}
+
+
+\newglossaryentry{ips}{
+    name={IPS},
+    description={integrated photonic spectrograph; spectrograph composed of integrated photonics technologies, i.e. \uli photonics lantern fused to \awg},
+    first={integrated photonic spectrograph (IPS)}
+}
+\newcommand{\ips}{\gls{ips}\xspace}
+
+\newglossaryentry{leo}{
+    name={LEO},
+    description={low earth orbit is considered to be between \SIrange{160}{2000}{\kilo\meter}},
+    first={low earth orbit (LEO)}
+}
+\newcommand{\leo}{\gls{leo}\xspace}
+
+
+\newglossaryentry{pimms0}{
+    name={PIMMS\#0},
+    description={Hybrid (photonic and bulk optic) version of PIMMS},
+}
+\newcommand{\pimmsZ}{\gls{pimms0}\xspace}
+
+\newglossaryentry{pimms1}{
+    name={PIMMS\#1},
+    description={Fully photonic version of PIMMS},
+}
+\newcommand{\pimmsOne}{\gls{pimms1}\xspace}
+
+\newglossaryentry{etendue}{
+    name={\'{e}tendue},
+    symbol={$A\Omega$},
+    description={geometric characterisation of an optical systems ability to accept light. Defined as product of area and solid angle of acceptance}
+    }
+\newcommand{\etendue}{\gls{etendue}\xspace}
+\newcommand{\AOm}{\glssymbol{etendue}\xspace}
+
+\newglossaryentry{throughput}{
+    name={throughput},
+    description={ratio of photons detected to photons collected.},
+    first={throughput}
+}
+\newcommand{\throughput}{\gls{throughput}\xspace}
+
+\newglossaryentry{resolvingpower}{
+    name={resolving power},
+    symbol={{$\mathcal{R}$}},
+    description={quantitative measure of a spectrographs ability to resolve neighbouring spectral features. Defined as $\mathcal{R}=\lambda/\Delta\lambda$},
+    first={resolving power ($\mathcal{R}$)}
+}
+\newcommand{\R}{\glssymbol{resolvingpower}}
+\newcommand{\resolvingpower}{\gls{resolvingpower}\xspace}
+\newcommand{\Rmath}{\mathcal{R}}
+\newcommand{\Rdef}{$\lambda/\Delta\lambda$}
+
+
+\newglossaryentry{spectralresolution}{
+    name={spectral resolution},
+    symbol={$\Delta\lambda$},
+    description={measure of the smallest wavelength difference resolvable at wavelength $\lambda$. Typically measured as the \fwhm of a spectral feature}
+}
+\newcommand{\dlam}{\glssymbol{spectralresolution}\xspace}
+\newcommand{\spectralresolution}{\gls{spectralresolution}\xspace}
+
+
+\newglossaryentry{f-ratio}{
+    name={focal ratio},
+    symbol={$f/\#$},
+    description={ratio of focal length and aperture/pupil diameter, defined as $f/\# = F/D$}
+}
+\newcommand{\fnum}{\glssymbol{f-ratio}\xspace}
+\newcommand{\fratio}{\gls{f-ratio}\xspace}
+
+\newglossaryentry{seeing}{
+    name={seeing},
+    description={the blurring of a telescope image due to atmospheric turbulence and varying the optical refractive index}
+}
+\newcommand{\seeing}{\gls{seeing}\xspace}
+
+\newglossaryentry{swir}{
+	name={SWIR},
+    first={short-wave infrared (SWIR)},
+    description={light with wavelengths from 1\um to 3\um}
+}
+\newcommand{\swir}{\gls{swir}\xspace}
+
+\newglossaryentry{ir}{
+	name={IR},
+    first={infrared (IR)},
+    description={light with wavelengths from 0.7\um to 100\um, but often used in context to indicate smaller regions.}
+}
+\newcommand{\ir}{\gls{ir}\xspace}
+
+\newglossaryentry{nir}{
+	name={NIR},
+    first={near-infrared (NIR)},
+    description={light with wavelength 0.7\um to 1\um, or edge of human vision to the silicon sensitivity cutoff}
+}
+\newcommand{\nir}{\gls{nir}\xspace}
+
+\newglossaryentry{uv}{
+	name={UV},
+    first={ultraviolet (UV)},
+    description={light with wavelength 10~nm to 400~nm.}
+}
+\newcommand{\uv}{\gls{uv}\xspace}
+
+
+\newglossaryentry{mfd}{
+    name={MFD},
+    description={diameter of the intensity profile of light at the out put of \fibre. Normally measured at the width at the $1/e^2$ intensity level},
+    first={mode-field diameter (MFD)}
+}
+\newcommand{\mfd}{\gls{mfd}\xspace}
+
+%\newglossaryentry{}{
+%    name={},
+%    symbol={$$},
+%    description={},
+%	 first={near-infrared (NIR)}
+%}
+%\newcommand{}{\glssymbol{}\xspace}
+
+
+
+

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdflatex:*)",
+      "Bash(/dev/null)",
+      "Bash(biber:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

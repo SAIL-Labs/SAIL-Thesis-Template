@@ -1,0 +1,352 @@
+\chapter{Template Overview and Usage Guide}
+\label{chap:overview}
+\newrefsegment
+\glsresetall
+
+This chapter provides a comprehensive guide for using this LaTeX thesis template. The template is designed for University of Sydney PhD theses and includes advanced features for figure management, bibliography handling, cross-referencing, and document customization.
+
+\section{Getting Started}
+\label{sect:getting-started}
+
+To begin using this template, you need to customize several key files with your specific thesis information. This section outlines the essential modifications required.
+
+\subsection{Document Metadata Configuration}
+\label{sect:metadata-config}
+
+The primary customization occurs in \texttt{preamble.tex}, where you define your thesis metadata. Update the following variables:
+
+\begin{lstlisting}[language=TeX,caption={Document metadata in preamble.tex}]
+% Document setup using dynamic variables
+\title{Your amazing thesis title.}
+\author{First Lastname}
+\def\thesisauthoremail{First.Lastname@sydney.edu.au}
+\def\thesiskeywords{Science; PhD Thesis}
+
+\collegeordept{Faculty of Science}
+\university{The University of Sydney}
+\degree{Doctor of Philosophy}
+\degreedate{\monthyeardate\today}
+\degreeyear{\the\year}
+\end{lstlisting}
+
+These variables automatically populate the title page, PDF metadata, and hyperlink information throughout your document.
+
+\subsection{Draft Mode Configuration}
+\label{sect:draft-mode}
+
+The template supports draft mode for faster compilation during development. In \texttt{thesis.tex}, you can toggle draft mode:
+
+\begin{lstlisting}[language=TeX,caption={Draft mode toggle in thesis.tex}]
+% Toggle draft mode - figures show as placeholder boxes
+\thesisisdrafttrue  % Enable draft mode
+% \thesisisdraftfalse % Disable draft mode for final version
+\end{lstlisting}
+
+When draft mode is enabled, all figures display as placeholder boxes, significantly reducing compilation time.
+
+\section{Bibliography Management}
+\label{sect:bibliography}
+
+The template uses the biblatex package with biber backend for sophisticated bibliography management.
+
+\subsection{Bibliography Files}
+\label{sect:bib-files}
+
+Bibliography sources are configured in \texttt{preamble.tex}:
+
+\begin{lstlisting}[language=TeX,caption={Bibliography configuration}]
+\addbibresource{bib/thesisRefs.bib}
+\addbibresource{bib/fake_publications.bib}
+\end{lstlisting}
+
+Add your own \texttt{.bib} files to the \texttt{bib/} directory and include them here.
+
+\subsection{Citation Commands}
+\label{sect:citations}
+
+The template uses biblatex citation commands. Key commands include:
+
+\begin{itemize}
+    \item \texttt{\textbackslash autocite\{key\}} - Automatic citation format: \autocite{yourname2024nature}
+    \item \texttt{\textbackslash textcite\{key\}} - In-text citation: \textcite{yourname2024nature}
+    \item \texttt{\textbackslash parencite\{key\}} - Parenthetical citation: \parencite{yourname2024nature}
+    \item \texttt{\textbackslash fullcite\{key\}} - Full citation in text
+    \item \texttt{\textbackslash fullciteandexclude\{key\}} - Full citation excluded from bibliography
+\end{itemize}
+
+\subsection{Compilation Sequence}
+\label{sect:compilation}
+
+For proper bibliography processing, use this compilation sequence:
+
+\begin{lstlisting}[language=bash,caption={Complete compilation sequence}]
+pdflatex thesis.tex
+biber thesis
+pdflatex thesis.tex
+pdflatex thesis.tex  # Second run for cross-references
+\end{lstlisting}
+
+\section{Figure Management}
+\label{sect:figure-management}
+
+The template provides powerful figure insertion macros defined in \texttt{Latex/Macros/MacroFile1.tex}.
+
+\subsection{Figure Insertion Macros}
+\label{sect:figure-macros}
+
+Key figure macros include:
+
+\begin{description}
+    \item[\texttt{\textbackslash figuremacroW\{filename\}\{label\}\{caption\}\{width\}}] Single figure with width control
+    \item[\texttt{\textbackslash figuremacroWp\{filename\}\{label\}\{caption\}\{width\}\{position\}}] Single figure with position control
+    \item[\texttt{\textbackslash figuremacroSUB\{label\}\{file1\}\{caption1\}\{width1\}\{file2\}\{caption2\}\{width2\}}] Side-by-side figures
+    \item[\texttt{\textbackslash figuremacroSUBp\{...\}\{position\}}] Side-by-side with position control
+\end{description}
+
+These macros automatically handle figure placement, labeling, and formatting consistency.
+
+\subsection{Cross-Referencing System}
+\label{sect:cross-ref-system}
+
+The template provides consistent cross-referencing macros:
+
+\begin{description}
+    \item[\texttt{\textbackslash fig\{label\}}] Short figure reference (Fig.~X.X)
+    \item[\texttt{\textbackslash Fig\{label\}}] Long figure reference (Figure~X.X)
+    \item[\texttt{\textbackslash eqn\{label\}}] Short equation reference (Eqn.~X.X)
+    \item[\texttt{\textbackslash Eqn\{label\}}] Long equation reference (Equation~X.X)
+    \item[\texttt{\textbackslash sect\{label\}}] Section reference (Sec.~X.X)
+    \item[\texttt{\textbackslash chap\{label\}}] Chapter reference (Chap.~X)
+    \item[\texttt{\textbackslash tabl\{label\}}] Table reference (Table~X.X)
+\end{description}
+
+\section{Chapter Organization}
+\label{sect:chapter-organization}
+
+\subsection{Chapter Structure}
+\label{sect:chapter-structure}
+
+Each chapter should follow this structure:
+
+\begin{lstlisting}[language=TeX,caption={Standard chapter template}]
+\chapter{Chapter Title}
+\label{chap:chapter-label}
+\newrefsegment  % Start new reference segment
+\glsresetall    % Reset glossary entries
+
+% Chapter content here
+\end{lstlisting}
+
+The \texttt{\textbackslash newrefsegment} command enables per-chapter bibliography sections if needed, while \texttt{\textbackslash glsresetall} resets glossary entry formatting.
+
+\subsection{Adding New Chapters}
+\label{sect:adding-chapters}
+
+To add a new chapter:
+
+\begin{enumerate}
+    \item Create a new \texttt{.tex} file in an appropriate directory
+    \item Add the chapter structure shown above
+    \item Include the file in \texttt{thesis.tex} using \texttt{\textbackslash include\{path/to/chapter\}} (without .tex extension)
+    \item Update the table of contents if necessary
+\end{enumerate}
+
+\subsection{Selective Compilation with \texttt{\textbackslash includeonly}}
+\label{sect:includeonly}
+
+When working on a large thesis, you may want to compile only specific chapters to save time. The template supports this through LaTeX's \texttt{\textbackslash includeonly} command.
+
+\subsubsection{Using \texttt{\textbackslash includeonly} in Overleaf}
+
+In the main \texttt{thesis.tex} file, you'll find commented examples:
+
+\begin{lstlisting}[language=TeX,caption={includeonly examples in thesis.tex}]
+%\includeonly{0_frontmatter/abstract,0_frontmatter/list_of_publications}
+% \includeonly{1_introduction/overview}
+% \includeonly{2/macros}
+% \includeonly{3/figures}
+\end{lstlisting}
+
+To compile only specific chapters:
+
+\begin{enumerate}
+    \item \textbf{Uncomment} the \texttt{\textbackslash includeonly} line for your desired chapters
+    \item \textbf{Ensure only one} \texttt{\textbackslash includeonly} command is active at a time
+    \item \textbf{Recompile} in Overleaf - only the specified chapters will be processed
+    \item \textbf{Comment out} the \texttt{\textbackslash includeonly} line when you want to compile the full document
+\end{enumerate}
+
+\subsubsection{Benefits for Overleaf Users}
+
+\begin{itemize}
+    \item \textbf{Faster compilation}: Large theses with many figures compile much faster when working on individual chapters
+    \item \textbf{Reduced timeout risk}: Overleaf has compilation time limits; selective compilation helps stay within them
+    \item \textbf{Preserved cross-references}: LaTeX maintains references to other chapters even when they're not compiled
+    \item \textbf{Efficient editing}: Focus on specific sections without waiting for the entire document to compile
+\end{itemize}
+
+\subsubsection{Important Notes}
+
+\begin{itemize}
+    \item Use \texttt{\textbackslash include\{path/filename\}} not \texttt{\textbackslash input\{path/filename\}} for chapters you want to selectively compile
+    \item The file path in \texttt{\textbackslash includeonly} must exactly match the path in \texttt{\textbackslash include}
+    \item Cross-references to excluded chapters will show as ``??'' until you compile the full document
+    \item Always do a final compilation with \texttt{\textbackslash includeonly} commented out before submission
+\end{itemize}
+
+\subsubsection{Example Workflow in Overleaf}
+
+\begin{enumerate}
+    \item Working on methodology chapter: Uncomment \texttt{\textbackslash includeonly\{2/macros\}}
+    \item Make edits to your methodology content
+    \item Compile quickly to see changes (faster than full document)
+    \item When ready to see full document with all references: Comment out \texttt{\textbackslash includeonly}
+    \item Final compile processes entire thesis with all cross-references resolved
+\end{enumerate}
+
+\section{Publications and Awards}
+\label{sect:publications-awards}
+
+\subsection{List of Publications}
+\label{sect:list-publications}
+
+The template includes \texttt{0\_frontmatter/list\_of\_publications.tex} for showcasing your academic contributions. This file uses:
+
+\begin{lstlisting}[language=TeX,caption={Publication listing format}]
+\section*{Journal Papers}
+\begin{itemize}
+    \item \fullciteandexclude{paper-key}
+    \\ Contents included throughout \chap{chapter-label} and \sect{section-label}.
+\end{itemize}
+\end{lstlisting}
+
+The \texttt{\textbackslash fullciteandexclude\{key\}} command displays the full citation but excludes it from the main bibliography to avoid duplication.
+
+\subsection{Connecting Publications to Content}
+\label{sect:connecting-publications}
+
+For each publication, specify which chapters and sections incorporate that work. This demonstrates the connection between your published research and thesis content.
+
+\section{Advanced Features}
+\label{sect:advanced-features}
+
+\subsection{Glossaries and Acronyms}
+\label{sect:glossaries}
+
+The template supports glossaries through the \texttt{glossaries} package. Define terms in glossary files and compile with:
+
+\begin{lstlisting}[language=bash]
+makeglossaries thesis
+\end{lstlisting}
+
+\subsection{Code Listings}
+\label{sect:code-listings}
+
+The template includes support for code listings with syntax highlighting:
+
+\begin{lstlisting}[language=TeX,caption={Code listing example}]
+\begin{lstlisting}[language=Python,caption={Python example}]
+def hello_world():
+    print("Hello, World!")
+\end{lstlisting}
+
+\subsection{Mathematical Content}
+\label{sect:math-content}
+
+The template loads \texttt{amsmath} and related packages for comprehensive mathematical typesetting. Use standard LaTeX math environments:
+
+\begin{equation}
+    \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+    \label{eqn:maxwell-faraday}
+\end{equation}
+
+Reference equations using \texttt{\textbackslash eqn\{maxwell-faraday\}} or \texttt{\textbackslash Eqn\{maxwell-faraday\}}.
+
+\section{Customization Options}
+\label{sect:customization}
+
+\subsection{Color Scheme}
+\label{sect:color-scheme}
+
+University colors are defined in \texttt{preamble.tex}:
+
+\begin{lstlisting}[language=TeX,caption={Color definitions}]
+\definecolor{SchoolColor}{RGB}{230, 70, 38} % Masterbrand red
+\definecolor{chaptergrey}{RGB}{230, 70, 38}
+\definecolor{midgrey}{RGB}{66, 66, 66}
+\end{lstlisting}
+
+Modify these values to match your requirements while maintaining university branding guidelines.
+
+\subsection{Font Configuration}
+\label{sect:font-config}
+
+The template uses Computer Modern fonts by default. Font modifications should be made carefully to maintain readability and university requirements.
+
+\subsection{Page Layout}
+\label{sect:page-layout}
+
+Page layout parameters are defined in \texttt{Latex/Classes/PhDthesisPSnPDF.cls}. Modify margins and spacing only if required by university guidelines.
+
+\section{Troubleshooting}
+\label{sect:troubleshooting}
+
+\subsection{Common Issues}
+\label{sect:common-issues}
+
+\begin{description}
+    \item[Bibliography not appearing] Ensure you run \texttt{biber} after \texttt{pdflatex}
+    \item[Cross-references showing as ??] Run \texttt{pdflatex} multiple times for cross-reference resolution
+    \item[Figures not displaying] Check file paths and ensure draft mode is disabled
+    \item[Glossary not generating] Run \texttt{makeglossaries} and recompile
+\end{description}
+
+\subsection{Compilation Errors}
+\label{sect:compilation-errors}
+
+For complex documents, compilation errors may occur. Common solutions:
+
+\begin{itemize}
+    \item Clear auxiliary files (\texttt{.aux}, \texttt{.bbl}, \texttt{.blg}, etc.) and recompile
+    \item Check for undefined references or missing files
+    \item Verify bibliography file syntax
+    \item Ensure all required packages are installed
+\end{itemize}
+
+\section{Best Practices}
+\label{sect:best-practices}
+
+\subsection{File Organization}
+\label{sect:file-organization}
+
+Maintain a clear directory structure:
+
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
+thesis/
+|-- thesis.tex              # Main document
+|-- preamble.tex            # Configuration
+|-- 0_frontmatter/          # Title, abstract, etc.
+|-- 1_introduction/         # Chapter directories
+|-- 2_methodology/
+|-- bib/                    # Bibliography files
+|-- figures/                # Figure files
++-- Latex/                  # Class and style files
+\end{lstlisting}
+
+\subsection{Version Control}
+\label{sect:version-control}
+
+Use version control (git) to track changes. The template includes appropriate \texttt{.gitignore} patterns for LaTeX auxiliary files.
+
+\subsection{Backup Strategy}
+\label{sect:backup-strategy}
+
+Regularly backup your work, especially:
+\begin{itemize}
+    \item Source \texttt{.tex} files
+    \item Bibliography \texttt{.bib} files  
+    \item Figure source files
+    \item Custom macros and style modifications
+\end{itemize}
+
+This template provides a robust foundation for academic thesis writing while maintaining flexibility for customization and extension.
