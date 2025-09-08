@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pdflatex:*)",
       "Bash(/dev/null)",
-      "Bash(biber:*)"
+      "Bash(biber:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

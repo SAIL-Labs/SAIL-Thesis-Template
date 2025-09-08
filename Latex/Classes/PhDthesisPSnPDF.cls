@@ -85,6 +85,7 @@
 %--> http://www.uni-giessen.de/partosch/eurotex99/ oberdiek/print/sli4a4col.pdf
 %--> http://me.in-berlin.de/~miwie/tex-refs/html/latex-packages.html
 %-->
+% \PassOptionsToPackage{hyphens}{url}
 \usepackage[ pdftex, plainpages = false, pdfpagelabels, 
              pdfpagelayout = OneColumn, % display single page, advancing flips the page
              bookmarks,

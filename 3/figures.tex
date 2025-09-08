@@ -6,7 +6,7 @@
 \section{Figure examples and macros}
 \label{sect:figexamples}
 
-This chapter demonstrates the use of various figure referencing macros and figure insertion commands provided by the thesis template. The template includes convenient macros that enforce consistent labeling and referencing practices throughout your thesis.
+This chapter demonstrates the use of various figure referencing macros and figure insertion commands provided by the thesis template. The template includes convenient macros that enforce consistent labeling and referencing practices throughout your thesis. For general template usage and getting started information, refer to \chap{overview}.
 
 The experimental techniques discussed here build upon recent advances in data analysis for high-energy physics experiments \autocite{yourname2024photwest} and modern condensed matter physics methodologies \autocite{yourname2023labchar}. These approaches have become standard practice in contemporary experimental physics research.
 
@@ -16,12 +16,12 @@ The experimental techniques discussed here build upon recent advances in data an
 The template provides several referencing macros defined in MacroFile1.tex that automatically format references with proper prefixes. These referencing conventions are consistent with those used in the experimental validation of novel computational methods \autocite{yourname2023mnras} and numerical analysis studies \autocite{rodriguez2023opex}:
 
 \begin{itemize}
-    \item \texttt{\textbackslash fig\{label\}} produces short figure references like \fig{example-image-a}
-    \item \texttt{\textbackslash Fig\{label\}} produces long figure references like \Fig{example-image-b}
+    \item \texttt{\textbackslash fig\{label\}} produces short figure references like \fig{MCFgeometry}
+    \item \texttt{\textbackslash Fig\{label\}} produces long figure references like \Fig{example-grid}
     \item \texttt{\textbackslash eqn\{label\}} produces short equation references like \eqn{sampleequation}
     \item \texttt{\textbackslash Eqn\{label\}} produces long equation references like \Eqn{sampleequation}
     \item \texttt{\textbackslash sect\{label\}} produces section references like \sect{figexamples}
-    \item \texttt{\textbackslash chap\{label\}} produces chapter references like \chap{intro}
+    \item \texttt{\textbackslash chap\{label\}} produces chapter references like \chap{DesignPrinciples}
     \item \texttt{\textbackslash tabl\{label\}} produces table references like \tabl{sampletable}
 \end{itemize}
 
@@ -43,21 +43,30 @@ The template provides several convenient macros for inserting figures consistent
 \subsubsection{Dual Figure Layout}
 The \texttt{\textbackslash figuremacroSUB} macro creates side-by-side figures as shown below:
 
-\figuremacroSUB{Comparison of example images}{example-image-a}{This shows the first example image demonstrating the left panel of a dual figure layout}{0.4}{example-image-b}{This shows the second example image demonstrating the right panel of a dual figure layout}{0.4}
+\figuremacroSUB{dual-layout-example}{example-image-a}{This shows the first example image demonstrating the left panel of a dual figure layout with proper aspect ratio and spacing}{0.45}{example-image-b}{This shows the second example image demonstrating the right panel of a dual figure layout with complementary content}{0.45}
 
-Notice how \Fig{Comparison of example images} demonstrates the dual figure layout. You can reference individual components using \fig{example-image-a} and \fig{example-image-b}.
+Notice how \Fig{dual-layout-example} demonstrates the dual figure layout. You can reference individual components using \fig{example-image-a} and \fig{example-image-b}.
 
 \subsubsection{Single Figure with Width Control}
 The \texttt{\textbackslash figuremacroW} macro provides width control for single figures:
 
-\figuremacroW{example-image-c}{Full-width example}{This figure demonstrates a full-width image using the figuremacroW command with width parameter set to 1.0}{1}
+\figuremacroW{example-image-c}{Full-width demonstration}{This figure demonstrates a full-width image using the figuremacroW command with width parameter set to 1.0, showing how large diagrams or detailed schematics can utilize the complete text width for maximum clarity}{1}
 
 The full-width layout shown in \fig{example-image-c} is useful for wide diagrams or detailed images that need maximum space.
 
 \subsubsection{Figure with Position Control}
 The \texttt{\textbackslash figuremacroWp} macro adds position control parameters:
 
-\figuremacroWp{example-image-a}{Positioned example}{This figure demonstrates position control using the figuremacroWp macro with width 0.8 and position 'h' (here)}{0.8}{h}
+\figuremacroWp{example-image-a}{Positioned figure example}{This figure demonstrates position control using the figuremacroWp macro with width 0.8 and position 'h' (here), allowing for precise placement control within the document flow}{0.8}{h}
+
+The positioning control demonstrated in \fig{example-positioned} allows for better integration with surrounding text and improved document flow.
+
+\subsection{Advanced Figure Examples}
+\label{sect:advancedfigs}
+
+For more complex scientific diagrams, the template supports various specialized formats. The multi-core fiber geometry shown in \Fig{MCFgeometry} demonstrates how vector graphics can be integrated seamlessly. Additionally, calibration patterns such as the one in \Fig{example-grid} are essential for experimental validation and system characterization.
+
+The template also includes comprehensive code examples for data analysis and optical system modeling. See \apdx{code_examples} for comprehensive examples including Python implementations, MATLAB classes, and ZEMAX automation scripts. These examples demonstrate best practices for scientific computing in optical system analysis.
 
 \subsection{Sample Table}
 \label{sect:sampletable}
@@ -86,15 +95,15 @@ As detailed in \tabl{sampletable}, each macro provides consistent formatting for
 \centering
 \def\svgwidth{0.8\columnwidth}
 \includesvg{2/figures/1x7}
-	\caption[TOC title]{Caption.}
-	\label{fig:MCFgeometry}
+	\caption[Inkscape SVG]{Example of an SVG rendering using the inkscapeSVG2PDFtex.sh script to covert to pdf and latex.}
+	\label{fig:InkscapeSVG}
 \end{figure}
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{example-grid-100x100pt}
-	\caption[TOC Title]{Long Caption}
-	\label{fig:simulated tiger}
+	\includegraphics[width=0.6\textwidth]{example-grid-100x100pt}
+	\caption[Example grid pattern]{Example grid pattern demonstrating the resolution and sampling characteristics of the optical system. This standard test pattern is used for calibration and system verification.}
+	\label{fig:example-grid}
 \end{figure}
 
 
